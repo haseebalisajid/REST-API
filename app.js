@@ -1,7 +1,7 @@
-const bodyParser = require("body-parser");
 const express = require("express");
 const app= express();
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const cors=require('cors');
 //import routes
 const userRoute=require('./Routes/users');
@@ -10,12 +10,14 @@ const userRoute=require('./Routes/users');
 app.use(cors());
 app.use(bodyParser.json());
 
+//ADDING USER ROUTER
 app.use('/users',userRoute);
 
-//Routes
 
+
+//MAIN ROUTE
 app.get('/',(req,res)=>{
-    res.send('home route')
+  res.json({'description':"REST API V 1.0","route":"go to /users to see all users"})
 })
 
 
