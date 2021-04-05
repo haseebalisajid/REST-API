@@ -1,0 +1,27 @@
+<div class="form-group">
+    <label for="name">Name</label>
+    <input required placeholder="Enter Name" value="<%= user.name %>" type="text" name="name" id="name" class="form-control">
+</div>
+<div class="form-group">
+    <label for="email">Email</label>
+    <input required placeholder="Enter Email" value="<%= user.email %>" type="email" name="email" id="email" class="form-control">
+</div>
+<div class="form-group">
+    <label for="role">Role</label>
+    <input required placeholder="Enter Role" value="<%= user.role %>" type="role" name="role" id="role" class="form-control">
+</div>
+<div class="form-group">
+    <label for="age">Age</label>
+    <input required placeholder="Enter Age" value="<%= user.age %>" type="age" name="age" id="age" class="form-control">
+</div>
+<div class="form-group">
+    <label for="experience">Experience</label>
+    <input required placeholder="Enter Experience" value="<%= user.experience %>" type="experience" name="experience" id="experience" class="form-control">
+</div>
+<div class="form-group">
+    <label for="bio">Bio</label>
+    <textarea placeholder="Enter Bio" name="bio" id="bio" class="form-control"><%= user.bio %></textarea>
+</div>
+
+<a href="/users" class="btn btn-secondary">Cancel</a>
+<button type="submit" class="btn btn-primary">Save</button>

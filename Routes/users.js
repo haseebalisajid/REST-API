@@ -8,18 +8,21 @@ const User=require('../models/user');
 const userController = require('../controllers/user');
 
 //GET ALL USERS
-router.get("/", userController.findOne  );
+router.get("/", userController.findUsers  );
+
+router.get("/new",userController.newUser);
 
 //ADD NEW USER
 router.post('/',userController.addUser )
 
 //SPECIFIC USER
-router.get('/:userId',userController.findSpecificUser);
+router.get('/edit/:userId',userController.findSpecificUser)
 
 //DELETE USER
 router.delete('/:userId',userController.deleteUser);
 
 //UPDATE USER
-router.patch('/:userId',userController.updateUser)
+router.put('/:userId',userController.updateUser)
+
 
 module.exports = router;

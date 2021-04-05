@@ -11,10 +11,6 @@ const UserSchema = mongoose.Schema({
     match: /.+\@.+\..+/, //adding some validations to email
     unique: true, //email must be unique
   },
-  age: {
-    type: Number,
-    required: true,
-  },
   bio: {
     type: String,
     required: true,
@@ -23,9 +19,17 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  age: {
+    type: Number,
+    required: true,
+  },
+  experience: {
+    type: Number,
+    required: true,
+  },
+  createdAt: {
     type: Date,
-    default: Date.now,
+    default: new Date(),
   },
 });
 

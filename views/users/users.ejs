@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Users</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron p-2 mt-2">
+            <div class="pb-2">
+                <h1>User's Database</h1>
+                <p>Assignment # 2 of TCS-1</p>
+                <p>Haseeb Ali Sajid. SP18-BCS-065</p>
+                <a href="/users/new" class="btn btn-success"><i class="fas fa-plus"></i> New User</a>
+            </div>
+        </div>
+        <div class="align-content-end">
+            <form action="/users" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Enter User Name" class="form-control">
+                    <input type="submit" value="search" class="btn btn-dark">
+                </div>
+            </form>
+        </div>
+        <% if(users.length> 0){ %>
+            <div class="d-flex flex-wrap">
+                <% users.forEach(user=> { %>
+                    <div class="card mt-4 mr-3 col-3">
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <%= user.name %>
+                            </h3>
+                            <div class="card-subtitle text-muted mb-2">
+                                <%= user.createdAt.toLocaleDateString() %>
+                            </div>
+                            <div class="card-subtitle text-muted mb-2">
+                                <%= user.role %>
+                            </div>
+                            <div class="card-text mb-2">
+                                <%= user.age %> Years old
+                            </div>
+                            <div class="card-text mb-2">
+                                Years of experience: <%= user.experience %>
+                            </div>
+                            <div class="card-text mb-2 h-40">
+                                <%= user.bio %>
+                            </div>
+                            <div>
+                                <a href="users/edit/<%= user.id %>" class="btn btn-info"> <i class="fas fa-edit"></i> Edit</a>
+                                <form action="/users/<%= user.id %>?_method=DELETE" method="POST" class="d-inline">
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-user-times"></i> Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        <% } else{ %>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <h3 class="mt-4 text-center">No user in Database.</h3>
+                <a href="/users" class="btn btn-success text-center"><i class="fas fa-arrow-circle-left"></i> Back</a>
+            </div>
+        <% } %>
+    </div>
+</body>
+
+</html>

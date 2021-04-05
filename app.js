@@ -3,12 +3,17 @@ const app= express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors=require('cors');
+const methodOverride=require('method-override')
 //import routes
 const userRoute=require('./Routes/users');
+
+app.set('view engine','ejs');
 
 //middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'))
 
 //ADDING USER ROUTER
 app.use('/users',userRoute);
@@ -17,7 +22,8 @@ app.use('/users',userRoute);
 
 //MAIN ROUTE
 app.get('/',(req,res)=>{
-  res.json({'description':"REST API V 1.0","route":"go to /users to see all users"})
+  // res.json({'description':"REST API V 1.0","route":"go to /users to see all users"})
+  res.render('index');
 })
 
 
